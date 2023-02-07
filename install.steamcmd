@@ -1,0 +1,15 @@
+// do not shutdown on a failed command
+@ShutdownOnFailedCommand 0
+
+// no password needed
+@NoPromptForPassword 1
+
+// path to install
+force_install_dir /server-data
+
+login anonymous 
+
+// install/update
+app_update 380870 validate
+
+quit
