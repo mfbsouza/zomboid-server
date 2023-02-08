@@ -6,7 +6,7 @@ LABEL desc="This image installs/updates the Project Zomboid \
 Game Server located at ./data folder. So the folder should \
 be proper mounted before running this image"
 
-USER pzuser
+USER root
 WORKDIR /tmp
 COPY ./install.steamcmd .
 CMD steamcmd +runscript /tmp/install.steamcmd
