@@ -7,5 +7,5 @@ RUN useradd -ms /bin/bash pzuser
 
 # start the server
 USER pzuser
-WORKDIR /server-data
-CMD bash start-server.sh -servername PROJECT_GDS
+WORKDIR /home/pzuser/server-data
+CMD bash start-server.sh

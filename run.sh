@@ -1,17 +1,13 @@
 #!/bin/bash
 
-# build the server runner
-docker build -t zomboid-server .
-
 # run the server
 docker run \
-	-it \
-	--rm \
-	--name zomboid-server \
-	-v $(pwd)/data:/server-data \
-	-p 8766:8766/udp \
-	-p 8767:8767/udp \
-	-p 16261:16261/udp \
-	-p 16262-16282:16262-16282/udp \
+	-dit \
+	--restart=unless-stopped \
+	--name pz-server \
+	--mount type=bind,source="$(pwd)/data",target=/home/pzuser/server-data \
+	--mount type=bind,source="$(pwd)/config",target=/home/pzuser/Zomboid \
+	-p 8766-8767:8766-8767/udp \
+	-p 16261-16271:16261-16271/udp \
 	-p 27015:27015 \
-	zomboid-server
+	-i mfbsouza/zomboid-server
